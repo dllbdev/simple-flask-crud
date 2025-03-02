@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manage Clients</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
+    />
+    <link rel="stylesheet" href="../styles/style.css" />
+  </head>
+  <body>
+    <a
+      href="javascript:history.back()"
+      class="button is-link is-light back-button"
+      >← Back</a
+    >
+    <h1>Manage Clients</h1>
+    <form method="post">
+      <label>Name: <input type="text" name="name" required /></label>
+      <label>RUT: <input type="text" name="rut" required /></label>
+      <label>Location: <input type="text" name="location" required /></label>
+      <button type="submit">Add Client</button>
+    </form>
+
+    {% with messages = get_flashed_messages() %} {% if messages %}
+    <ul>
+      {% for message in messages %}
+      <li>{{ message }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %} {% endwith %}
+
+    <h2>Client List</h2>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>RUT</th>
+        <th>Location</th>
+      </tr>
+      {% for client in clients %}
+      <tr>
+        <td>{{ client.name }}</td>
+        <td>{{ client.rut }}</td>
+        <td>{{ client.location }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  </body>
+</html>

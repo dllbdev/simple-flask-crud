@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manage Sales</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <a
+      href="javascript:history.back()"
+      class="button is-link is-light back-button"
+      >← Back</a
+    >
+    <div class="container">
+      <h1 class="title">Manage Sales</h1>
+      <form id="add-sale-form" method="post">
+        <div class="field">
+          <label class="label">Product:</label>
+          <div class="control">
+            <div class="select is-fullwidth">
+              <select name="product_id" required>
+                <!-- Options will be dynamically inserted here -->
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Client:</label>
+          <div class="control">
+            <div class="select is-fullwidth">
+              <select name="client_id" required>
+                <!-- Options will be dynamically inserted here -->
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Quantity:</label>
+          <div class="control">
+            <input class="input" type="number" name="quantity" required />
+          </div>
+        </div>
+        <div class="control">
+          <button class="button is-primary" type="submit">Add Sale</button>
+        </div>
+      </form>
+    </div>
+    <br />
+    <div class="container">
+      <h2 class="title">Sales List</h2>
+      <table class="table is-fullwidth is-striped">
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Client</th>
+            <th>Quantity</th>
+            <th>Total Price</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="sales-table-body">
+          <!-- Sales will be dynamically inserted here -->
+        </tbody>
+      </table>
+    </div>
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
