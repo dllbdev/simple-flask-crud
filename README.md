@@ -21,7 +21,7 @@ To install run in terminal:
 
     pip install -r requirements.txt
 
-## Set up
+## Backend Set up
 
 To locally deploy this application, first follow these set up instructions:
 
