@@ -4,11 +4,11 @@ A simple CRUD web app for inventory and sales recording.
 
 This was a semestral project I created as TA for the *Database Systems* course at UTEM.
 
-I emulated the web app in a simple static website (HTML, JS, CSS) as a [live demo](https://dllbdev.github.io/simple-inventory-sales-crud/).
+I emulated the web app in a simple static website (HTML, JS, CSS) as a [live demo](https://dllbdev.github.io/flask-mysql-crud/).
 
 ## Requirements
 
- `MySQL` is used for the databases in the backend. So, the **first step** is to install `MySQL Workbench 8.0` (recommended) and set up your localhost server and password there.
+ `MySQL` is used for the databases in the backend. So, the **first step** is to install `MySQL Workbench 8.0` (recommended) and run it to set up the localhost server there.
 
 Then, the python libraries needed are:
 
@@ -27,11 +27,11 @@ To locally deploy this application, first follow these set up instructions:
 
 1. Create a *schema* inside Workbench, for this project the name used is `inventory_db`.
 
-2. Create the tables needed inside `inventory_db` schema. You can do this by executing the SQL file at `back/sql/tables.sql` inside Workbench.
+2. Create the tables needed inside `inventory_db` schema. This can be done by executing the SQL file `tables.sql` provided inside Workbench.
 
-3. Modify the `populate_db.py` and `config.py` to add the MySQL localhost server connection credentials (host, user, password, database).
+3. Modify the `populate_db.py` and `config.py` files to add the connection credentials (host, user, password, database).
 
-4. Execute the `populate_db.py` file in terminal to populate the databases created with random fake data.
+4. Execute the `python populate_db.py` in terminal to populate the databases created with random fake data.
 
 ## Deployment
 
