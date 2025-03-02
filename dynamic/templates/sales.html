@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manage Sales</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
+    />
+    <link rel="stylesheet" href="../styles/style.css" />
+  </head>
+  <body>
+    <a
+      href="javascript:history.back()"
+      class="button is-link is-light back-button"
+      >← Back</a
+    >
+    <h1>Manage Sales</h1>
+    <form method="post">
+      <label
+        >Product:
+        <select name="product_id" required>
+          {% for product in products %}
+          <option value="{{ product.id }}">
+            {{ product.brand }} - {{ product.type }} - ${{ product.price }}
+          </option>
+          {% endfor %}
+        </select>
+      </label>
+      <label
+        >Client:
+        <select name="client_id" required>
+          {% for client in clients %}
+          <option value="{{ client.id }}">{{ client.name }}</option>
+          {% endfor %}
+        </select>
+      </label>
+      <label>Quantity: <input type="number" name="quantity" required /></label>
+      <button type="submit">Add Sale</button>
+    </form>
+
+    {% with messages = get_flashed_messages() %} {% if messages %}
+    <ul>
+      {% for message in messages %}
+      <li>{{ message }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %} {% endwith %}
+
+    <h2>Sales List</h2>
+    {% set product_dict = {} %} {% for product in products %} {% set _ =
+    product_dict.update({product.id: product}) %} {% endfor %} {% set
+    client_dict = {} %} {% for client in clients %} {% set _ =
+    client_dict.update({client.id: client}) %} {% endfor %}
+
+    <table>
+      <tr>
+        <th>Product</th>
+        <th>Client</th>
+        <th>Quantity</th>
+        <th>Total Price</th>
+        <th>Sale Date</th>
+        <th>Action</th>
+      </tr>
+      {% for sale in sales %}
+      <tr>
+        <td>
+          {{ product_dict[sale.product_id].brand }} - {{
+          product_dict[sale.product_id].type }} - ${{
+          product_dict[sale.product_id].price }}
+        </td>
+        <td>{{ client_dict[sale.client_id].name }}</td>
+        <td>{{ sale.quantity }}</td>
+        <td>${{ sale.total_price }}</td>
+        <td>{{ sale.sale_date }}</td>
+        <td>
+          <form
+            action="{{ url_for('delete_sale', sale_id=sale.id) }}"
+            method="post"
+          >
+            <button type="submit">Delete</button>
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+  </body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manage Products</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
+    />
+    <link href="'https://cdn.skypack.dev/@faker-js/faker'" />
+    <link rel="stylesheet" href="../styles/style.css" />
+  </head>
+  <body>
+    <a
+      href="javascript:history.back()"
+      class="button is-link is-light back-button"
+      >← Back</a
+    >
+    <h1>Manage Products</h1>
+    <form method="post">
+      <label>Brand: <input type="text" name="brand" required /></label>
+      <label>Type: <input type="text" name="type" required /></label>
+      <label>Origin: <input type="text" name="origin" required /></label>
+      <label
+        >Price: <input type="number" name="price" step="0.01" required
+      /></label>
+      <button type="submit">Add Product</button>
+    </form>
+
+    {% with messages = get_flashed_messages() %} {% if messages %}
+    <ul>
+      {% for message in messages %}
+      <li>{{ message }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %} {% endwith %}
+
+    <h2>Product List</h2>
+    <table>
+      <tr>
+        <th>Brand</th>
+        <th>Type</th>
+        <th>Origin</th>
+        <th>Price</th>
+        <th>Action</th>
+      </tr>
+      {% for product in products %}
+      <tr>
+        <td>{{ product.brand }}</td>
+        <td>{{ product.type }}</td>
+        <td>{{ product.origin }}</td>
+        <td>${{ product.price }}</td>
+        <td>
+          <form
+            action="{{ url_for('delete_product', product_id=product.id) }}"
+            method="post"
+          >
+            <button type="submit">Delete</button>
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+  </body>
+</html>

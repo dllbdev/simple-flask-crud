@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manage Clients</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <a
+      href="javascript:history.back()"
+      class="button is-link is-light back-button"
+      >← Back</a
+    >
+    <div class="container">
+      <h1 class="title">Manage Clients</h1>
+      <form id="add-client-form" method="post">
+        <div class="field">
+          <label class="label">Name:</label>
+          <div class="control">
+            <input class="input" type="text" name="name" required />
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">RUT:</label>
+          <div class="control">
+            <input class="input" type="text" name="rut" required />
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Location:</label>
+          <div class="control">
+            <input class="input" type="text" name="location" required />
+          </div>
+        </div>
+        <div class="control">
+          <button class="button is-primary" type="submit">Add Client</button>
+        </div>
+      </form>
+    </div>
+    <br />
+    <div class="container">
+      <h2 class="title">Client List</h2>
+      <table class="table is-fullwidth is-striped">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>RUT</th>
+            <th>Location</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="clients-table-body">
+          <!-- Clients will be dynamically inserted here -->
+        </tbody>
+      </table>
+    </div>
+    <script type="module" src="app.js"></script>
+  </body>
+</html>

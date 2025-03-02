@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sales & Inventory System</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
+    />
+    <link rel="stylesheet" href="../styles/style.css" />
+  </head>
+  <body>
+    <h1>Inventory Management System</h1>
+    <ul>
+      <li><a href="{{ url_for('manage_products') }}">Manage Products</a></li>
+      <li><a href="{{ url_for('manage_clients') }}">Manage Clients</a></li>
+      <li><a href="{{ url_for('manage_sales') }}">Manage Sales</a></li>
+    </ul>
+  </body>
+</html>
