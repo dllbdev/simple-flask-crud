@@ -31,7 +31,7 @@ To locally deploy this application, first follow these set up instructions:
 
 3. Modify the `populate_db.py` and `config.py` files to add the connection credentials (host, user, password, database).
 
-4. Execute the `python populate_db.py` in terminal to populate the databases created with random fake data.
+4. Execute `python populate_db.py` in terminal to populate the databases created with random fake data.
 
 ## Deployment
 
